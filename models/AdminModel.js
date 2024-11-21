@@ -16,7 +16,7 @@ const adminSchema = mongoose.Schema({
 
 }, {timestamp:true})
 
-adminSchema.pre("save", async (next) => {
+adminSchema.pre("save", async function (next) {
   if(!this.isModified('password')) { return next();
 
   }
