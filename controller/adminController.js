@@ -107,8 +107,8 @@ const getAdmin = asyncHandler(async (req, res) => {
 //Get details of the admins
 const getAdmins = asyncHandler(async (req, res) => {
   try{
-  const admins = await AdminModal.find()
-  .sort("createdAt")
+  const admins = await AdminModel.find()
+  .sort("-createdAt")
   .select("-password");
 
   if(!admins){
@@ -138,4 +138,36 @@ const updateAdmin = asyncHandler(async(req, res) => {
   }
 })
 
-module.exports = { register, login, getAdmin, getAdmins, updateAdmin };
+//Delete admin
+
+const deleteAdmin = asyncHandler(async (req, res) => {
+  try{
+    const {adminId} = req.params;
+    const admin = await AdminModel.findById(adminId);
+    if(!admin){
+      return res.status(404).json({message: "Admin not found"})
+    }
+    await admin.deleteOne();
+    res.status(200).json({message: "Admin deleted successfully"});
+  }catch(error){
+    console.error(error.message);
+    res.status(500).json({errorMessage: error.message});
+  }
+
+})
+
+//logout Admin
+const adminLogout = asyncHandler(async (req, res) => {
+  res.cookie("token", "", {
+    path: "/",
+    httpOnly: true,
+    expires: new Date(Date.now()),
+    sameSite: "none",
+    secure: true
+  })
+
+  res.status(200).json({ message: "Logged out successfully" });
+
+})
+
+module.exports = { register, login, getAdmin, getAdmins, updateAdmin, deleteAdmin,adminLogout };

@@ -44,3 +44,4 @@ const protectAdmin = asyncHandler(async (req, res, next) => {
 
 // Middleware to check if admin has admin role
 module.exports = { protectAdmin };
+
