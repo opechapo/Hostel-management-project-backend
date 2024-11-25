@@ -8,8 +8,6 @@ const cors = require('cors');
 const adminRoutes = require("./routes/adminRoutes");
 const cookieParser = require('cookie-parser');
 
-
-
 const PORT = 5000
 
 
@@ -44,3 +42,4 @@ mongoose.connection.once("open", () =>{
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
   
 })
+
