@@ -25,7 +25,7 @@ const studentSchema = new mongoose.Schema({
   gender:{
     type: String,
     required: true,
-    enum: ['Male', 'Female', 'Other']
+    enum: ['male', 'female', 'others']
   },
   nationality:{
     type: String,
@@ -46,7 +46,7 @@ const studentSchema = new mongoose.Schema({
   role: {
     type: String,
     default: 'student',
-    enum: ['Student']
+    enum: ['student']
   },
   checkedIn: {
     type: Boolean,
