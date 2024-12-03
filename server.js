@@ -13,6 +13,13 @@ const cookieParser = require('cookie-parser');
 
 const PORT = 5000
 
+app.use(cors({
+
+  origin: ["http://localhost:5173"], 
+  credentials: true,
+  optionsSuccessStatus: 200,
+  methods: "GET, POST, PUT,DELETE, PATCH,HEAD, OPTIONS",
+}))
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,13 +38,7 @@ app.use("/student", studentRoutes);
 //Staying constant 
 
 
-app.use(cors({
 
-  origin: ["http://localhost:5173"], 
-  credentials: true,
-  optionsSuccessStatus: 200,
-  methods: "GET, POST, PUT,DELETE, PATCH,HEAD, OPTIONS",
-}))
 
 app.get('/',(req, res) => console.log("Hello world"))
 

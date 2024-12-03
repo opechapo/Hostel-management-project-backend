@@ -18,11 +18,13 @@ const register = asyncHandler(async (req, res) => {
       throw new Error("Password should be at least 6 characters long");
     }
     //check if email admin already exists
+
+
     const adminExists = await AdminModel.findOne({ email });
     if (adminExists) {
-      res.status(400);
-      throw new Error("Email already exists");
+     return res.status(400).json({msg: "Email already exists"})
     }
+
     //create a new admin in the database
     const admin = await AdminModel.create({ fullname, email, password });
 
