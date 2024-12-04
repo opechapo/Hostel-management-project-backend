@@ -35,7 +35,7 @@ const register = asyncHandler(async (req, res) => {
       path: "/",
       httpOnly: true,
       expires: new Date(Date.now() + 1000 * 86400), // expires in 1 day });
-      sameSite: "none",
+      sameSite: "none",  
       secure: true,
     });
 
