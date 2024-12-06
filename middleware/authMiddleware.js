@@ -10,8 +10,6 @@ const protectAdmin = asyncHandler(async (req, res, next) => {
     req.cookies.token
   ) {
     try {
-      console.log(req.cookies);
-
       // console.log(req.headers.authorization);
 
       token = req.headers?.authorization?.split(" ")[1] || req.cookies.token;
