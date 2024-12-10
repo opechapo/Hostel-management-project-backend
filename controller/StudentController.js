@@ -94,12 +94,12 @@ const getAllStudents = asyncHandler(async (req, res) => {
   try {
     const students = await Student.find().populate("room").sort("-createdAt");
     if (!students) {
-      return res.status(404).json({ message: "No students found" });
+      return res.status(404).json({ msg: "No students found" });
     }
     res.status(200).json(students);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({ msg: "Internal Server Error" });
   }
 });
 
