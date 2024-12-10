@@ -15,7 +15,7 @@ const PORT = 5000
 
 app.use(cors({
 
-  origin: ["http://localhost:5173"], 
+  origin: [process.env.FRONTEND_URL,"https://hostel-management-frontend-gamma.vercel.app"], 
   credentials: true,
   optionsSuccessStatus: 200,
   methods: "GET, POST, PUT,DELETE, PATCH,HEAD, OPTIONS",
